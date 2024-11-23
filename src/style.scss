@@ -1,0 +1,366 @@
+// Variables
+$google-blue: #1a73e8;
+$text-primary: #202124;
+$text-secondary: #5f6368;
+$text-secondary2: #b5b6b7;
+$border-color: #dadce0;
+$background-light: #f8f9fa;
+$white: #ffffff;
+
+// Mixins
+@mixin flex($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Google Sans', 'Roboto', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $white;
+}
+
+// Header styles
+.header {
+  @include flex(space-between);
+  padding: 8px 16px;
+  height: 64px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $white;
+  z-index: 1000;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  &__logo {
+    @include flex;
+    gap: 8px;
+    
+    img {
+      height: 24px;
+    }
+
+    span {
+      font-size: 22px;
+      color: $text-primary;
+    }
+  }
+
+  &__right {
+    @include flex;
+    gap: 24px;
+
+    &-time {
+      color: $text-secondary;
+      font-size: 14px;
+    }
+
+    &-icons {
+      @include flex;
+      gap: 16px;
+
+      img {
+        height: 24px;
+        cursor: pointer;
+
+        &:last-child {
+          height: 32px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+// Main content styles
+.main {
+  @include flex(space-between);
+  max-width: 1200px;
+  margin: 104px auto 40px; // Add top margin to account for fixed header
+  padding: 0 48px;
+  gap: 48px;
+
+  @media (max-width: 1024px) {
+    margin-top: 84px; // Slightly less margin on smaller screens
+    flex-direction: column;
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  &__left {
+    max-width: 600px;
+
+    &-title {
+      font-size: 42px;
+      line-height: 52px;
+      color: $text-primary;
+      margin-bottom: 16px;
+      font-weight: 400;
+
+      @media (max-width: 768px) {
+        font-size: 32px;
+        line-height: 40px;
+        btn--primary {
+          width: 400px;
+        }
+      }
+    }
+
+    &-subtitle {
+      font-size: 16px;
+      line-height: 24px;
+      color: $text-secondary;
+      margin-bottom: 32px;
+    }
+
+    &-buttons {
+      @include flex(flex-start);
+      gap: 16px;
+      margin-bottom: 24px;
+      width: auto;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+
+        .btn, .input-group {
+            width: auto;
+            margin: 0 auto;
+            min-width: 200px;
+            max-width: 400px;
+        }
+      }
+
+      .input-group {
+        flex: 1;
+        max-width: 400px;
+      }
+    }
+
+    &-link {
+      color: $google-blue;
+      text-decoration: none;
+      font-size: 14px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__right {
+    &-illustration {
+      width: 480px;
+      height: 320px;
+      @include flex;
+      margin-bottom: 32px;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        height: auto;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    &-carousel {
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+
+      &-title {
+        font-size: 18px;
+        color: $text-primary;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      &-text {
+        font-size: 14px;
+        color: $text-secondary;
+        line-height: 20px;
+        margin-bottom: 16px;
+      }
+
+      &-dots {
+        @include flex;
+        gap: 8px;
+      }
+    }
+  }
+}
+
+// Button styles
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    width: auto;
+    min-width: min-content;
+
+    @media (max-width: 768px) {
+        width: auto;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    &--primary {
+        background-color: #1a73e8;
+        color: #fff;
+
+        &:hover {
+            background-color: #1669c1;
+        }
+    }
+
+    &--secondary {
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #ddd;
+
+        &:hover {
+            background-color: #f3f3f3;
+        }
+    }
+
+    &--secondary2 {
+        background-color: $white;
+        color: $text-secondary;
+        padding: 10px 24px;
+        
+        &:hover {
+            background-color: #f6fafe;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    .icon {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        margin-right: 4px;
+    }
+}
+
+
+// Dot indicators
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $border-color;
+  transition: background-color 0.2s ease;
+
+  &--active {
+    background-color: $google-blue;
+  }
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: $white;
+    width: fit-content;
+    min-width: max-content;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    &:hover {
+        background-color: #f3f3f3;
+    }
+
+    .icon {
+        width: 22px;
+        height: 22px;
+        margin-right: 8px;
+    }
+
+    .input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 16px;
+        color: $text-primary;
+        width: 200px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+
+        &::placeholder {
+            color: $text-secondary;
+        }
+    }
+}
+
+.divider {
+  height: 1px;
+  background-color: $border-color;
+  margin: 24px 0;
+  opacity: 0.5;
+
+  @media (max-width: 768px) {
+    margin: 16px 0;
+    width: 100%;
+  }
+}
+
+.header {
+    &__right {
+      &-time {
+        color: $text-secondary;
+        font-size: 14px;
+        white-space: nowrap;
+        font-family: 'Roboto', sans-serif;
+      }
+    }
+  }
+
+.learn-more {
+  &__text {
+    font-size: 14px;
+    color: $text-secondary;
+    
+    a {
+      color: $google-blue;
+      text-decoration: none;
+      font-weight: 500;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+}

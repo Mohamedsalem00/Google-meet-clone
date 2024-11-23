@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Meet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo">
+            <img src="../images/logo.svg" alt="Google Meet Logo">
+        </div>
+        <div class="header__right">
+            <span class="header__right-time" id="currentDateTime">Loading...</span>
+            <div class="header__right-icons">
+                <img src="../images/help.svg" alt="Help">
+                <img src="../images/Feedback.svg" alt="Feedback">
+                <img src="../images/settings.svg" alt="Settings">
+                <img src="../images/apps.svg" alt="Apps">
+                <img src="../images/profile.png" alt="Profile">
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="main__left">
+            <h1 class="main__left-title">La visioconférence haute qualité, maintenant disponible pour tous</h1>
+            <p class="main__left-subtitle">Nous avons adapté Google Meet, notre service de visioconférence professionnel sécurisé, afin de le rendre disponible pour tous.</p>
+            <div class="main__left-buttons">
+                <button class="btn btn--primary" style="margin-left: 0;"><img src="../images/video_call.svg" class="icon" alt="Video Call Icon">Nouvelle réunion</button>
+                <div class="input-wrapper" style="display: flex;">
+                    <div class="input-group">
+                        <img src="../images/keyboard.svg" class="icon" alt="Keyboard Icon">
+                        <input type="text" class="input" placeholder="Saisir un code ou un lien">
+                    </div>
+                    <button class="btn btn--secondary2">Participer</button>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="learn-more">
+                <span class="learn-more__text">
+                    <a href="#">En savoir plus</a> sur Google&nbsp;Meet
+                </span>
+            </div>
+        </section>
+
+        <section class="main__right">
+            <div class="main__right-illustration">
+                <img src="../images/image.png" alt="Meet Illustration">
+            </div>
+            <div class="main__right-carousel">
+                <h3 class="main__right-carousel-title">Obtenir un lien de partage</h3>
+                <p class="main__right-carousel-text">Cliquez sur Nouvelle réunion pour obtenir le lien à envoyer aux personnes que vous souhaitez inviter à une réunion</p>
+                <div class="main__right-carousel-dots">
+                    <div class="dot dot--active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+<script>
+    function updateDateTime() {
+        const dateElement = document.getElementById('currentDateTime');
+        const now = new Date();
+        const options = { hour: '2-digit', minute: '2-digit', weekday: 'short', day: 'numeric', month: 'short' };
+        const formattedDate = new Intl.DateTimeFormat('fr-FR', options).format(now);
+        dateElement.textContent = `${formattedDate}`;
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 60000); // Update every minute
+</script>
+</html>
