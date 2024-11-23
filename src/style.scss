@@ -14,7 +14,7 @@ $white: #ffffff;
   align-items: $align;
 }
 
-// Reset and base styles
+
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@ body {
   background-color: $white;
 }
 
-// Header styles
+
 .header {
   @include flex(space-between);
   padding: 8px 16px;
@@ -80,16 +80,16 @@ body {
   }
 }
 
-// Main content styles
+
 .main {
   @include flex(space-between);
   max-width: 1200px;
-  margin: 104px auto 40px; // Add top margin to account for fixed header
+  margin: 104px auto 40px;
   padding: 0 48px;
   gap: 48px;
 
   @media (max-width: 1024px) {
-    margin-top: 84px; // Slightly less margin on smaller screens
+    margin-top: 84px; 
     flex-direction: column;
     text-align: center;
     padding: 0 24px;
@@ -202,7 +202,7 @@ body {
   }
 }
 
-// Button styles
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -265,7 +265,7 @@ body {
 }
 
 
-// Dot indicators
+
 .dot {
   width: 8px;
   height: 8px;
